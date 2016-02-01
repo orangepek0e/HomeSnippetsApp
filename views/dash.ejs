@@ -1,0 +1,230 @@
+<html ng-app="HomeSnippets">
+
+<title>Dashboard</title>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="/node_modules/angular/angular.js"></script>
+
+    <!-- App.js & Controllers -->
+    <script src="/static/scripts/app.js"></script>
+    <script src="/static/scripts/controllers/navController.js"></script>
+    <script src="/static/scripts/controllers/postController.js"></script>
+    <script src="/static/scripts/controllers/dashController.js"></script>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/css/homeS.css">
+</head>
+<div class="modal fade" tabindex="-1" role="dialog" data-toggle="modal" data-target="#myModal" id="search">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Search For Listings</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="searchInput" placeholder="LOCATION">
+            </div>
+        </div>
+
+        
+
+        <br><br>
+        <div class="row">
+            <div class="col-sm-4">
+                <img  alt="Rooms" src="static/images/rooms.png" height="auto" width="50px" id="rooms">
+            </div>
+            <div class="col-sm-4">
+                <img  alt="Pets" src="static/images/pets.png" height="auto" width="45px" id="pets">
+            </div>
+            <div class="col-sm-4">
+                <img  alt="Parking" src="static/images/parking.png" height="auto" width="50px" id="parking">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="btn btn-primary">Rooms</span>  
+            </div>
+            <div class="col-sm-4">
+                <span class="btn btn-primary">Pet friendly</span>
+            </div>
+            <div class="col-sm-4">
+                <span class="btn btn-primary">Parking</span>
+            </div>
+        </div>
+
+        <br><br><br>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <img  alt="Rooms" src="static/images/tv-internet.png" height="auto" width="50px" id="tv-internet">
+            </div>
+
+            <div class="col-sm-4">
+                <img  alt="Pets" src="static/images/laundry.png" height="auto" width="50px" id="laundry">
+            </div>
+
+            <div class="col-sm-4">
+                <img  alt="Parking" src="static/images/sofa.png" height="auto" width="50px" id="sofa">
+            </div>
+        </div>
+
+         <div class="row">
+            <div class="col-sm-4">
+                <span class="btn btn-primary">TV & Internet</span>
+            </div>
+                <div class="col-sm-4">
+                    <span class="btn btn-primary">Laundry</span>
+                </div>
+                    <div class="col-sm-4">
+                        <span class="btn btn-primary">Furnished</span>
+                    </div>
+        </div><br><br>
+
+     </div>
+
+      <div class="modal-footer">
+        <a><i class="fa fa-search fa-3x"></i></a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<body>
+<div class="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img  alt="Brand" src="/static/images/logo.png" height="auto" width="80px" id="logo">
+                </a>
+            </div>
+
+            <div class="pull-right">
+                <button type="button" class="btn dashButton">Dashboard</button>
+                <button type="button" data-toggle="modal" data-target="#postModal" class="btn postButton">Post a listing</button>
+                <button type="button" class="btn searchButton"data-toggle="modal" data-target="#search">Search a listing</button>
+                <button type="button" class="btn messagesButton">Messages</button>
+            </div>
+        </div>
+
+    </nav>
+
+</div>
+
+<%- include postModal.ejs %>
+
+
+<div class="separator"></div>
+
+
+<div class="container" ng-controller="dashController">
+    <div class="row" ng-init="loadPosts()">
+        <div class="post-container"> 
+        <div ng-repeat="post in posts">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">{{post.title}}</h4>
+                    
+                </div>
+                <img data-src="..." alt="Video goes here." class="video">
+                <div class="card-block">
+                    <br>
+                    <a href="#" class="card-link">There are {{post.rooms}} rooms in this location</a>
+                    <br>
+                    <a href="#" class="card-link">This place costs: ${{post.price}}</a>
+                    <br><br>
+                    
+                </div>
+                <br>
+                
+
+            <div class="card-block">
+                    <div class="row">
+                        <div class="col-sm-12">
+                 <div style="width:auto; height:auto;  float:left; margin-left:17%; background-color: #FED136; color:white; " ng-show="post.wifi"> <img  alt="Rooms" src="static/images/tv-internet.png" height="auto" width="45px" id="tv-internet"></div>
+                                    
+                <div style="width:auto; height:auto; float:left; margin-left:17%; background-color: #FED136; color:white;" ng-show="post.pets"><img  alt="Pets" src="static/images/pets.png" height="auto" width="45px" id="pets"></div>
+                                    
+                <div style="width:auto; height:auto; background-color: ;  float:left;margin-left:17%; background-color: #FED136; color:white;" ng-show="post.parking"><img  alt="Parking" src="static/images/parking.png" height="auto" width="45px" id="parking"></div>
+
+                <br><br><br>
+                                    
+                <div style="width:auto; height:auto; background-color: ; float:left; margin-left:17%; background-color: #FED136; color:white;" ng-show="post.laundry"> <img  alt="Pets" src="static/images/laundry.png" height="auto" width="47px" id="laundry"></div>
+                                    
+                <div style="width:auto; height:auto; float:left; margin-left:17%; background-color: #FED136; color:white;" ng-show="post.furnished"> <img  alt="Parking" src="static/images/sofa.png" height="auto" width="47px" id="sofa"></div>
+                                    
+                <div style="width:auto; height:auto; float:left; margin-left:16%; background-color: #FED136; color:white;" ng-show="post.smoking"><img  alt="Pets" src="static/images/smoking.png" height="auto" width="47px"></div>
+            </div>
+
+                      </div>
+
+
+                </div>
+            </div>
+            <br>
+           <hr>
+        </div>
+    </div>
+
+
+        <!--&lt;!&ndash; LOCAL INFORMATION &ndash;&gt;-->
+        <!--<div class="col-sm-6">-->
+            <!--<div class="well">-->
+                <!--<h3><span class="fa fa-user"></span> Local</h3>-->
+                <!--<p>-->
+                    <!--<strong>id</strong>: <%= user._id %><br>-->
+                    <!--<strong>email</strong>: <%= user.local.email %><br>-->
+                    <!--<strong>password</strong>: <%= user.local.password %>-->
+                <!--</p>-->
+
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash; FACEBOOK INFORMATION &ndash;&gt;-->
+        <!--<div class="col-sm-6">-->
+            <!--<div class="well">-->
+                <!--<h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>-->
+
+                <!--<p>-->
+                    <!--<strong>id</strong>: <%= user.facebook.id %><br>-->
+                    <!--<strong>token</strong>: <%= user.facebook.token %><br>-->
+                    <!--<strong>email</strong>: <%= user.facebook.email %><br>-->
+                    <!--<strong>name</strong>: <%= user.facebook.name %>-->
+                <!--</p>-->
+
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash; TWITTER INFORMATION &ndash;&gt;-->
+        <!--<div class="col-sm-6">-->
+            <!--<div class="well">-->
+                <!--<h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>-->
+
+                <!--<p>-->
+                    <!--<strong>id</strong>: <%= user.twitter.id %><br>-->
+                    <!--<strong>token</strong>: <%= user.twitter.token %><br>-->
+                    <!--<strong>username</strong>: <%= user.twitter.username %><br>-->
+                    <!--<strong>displayName</strong>: <%= user.twitter.displayName %>-->
+                <!--</p>-->
+
+            <!--</div>-->
+        <!--</div>-->
+
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

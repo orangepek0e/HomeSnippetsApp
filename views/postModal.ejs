@@ -1,0 +1,103 @@
+
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" ng-controller="postController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Post A Listing</h4>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                 <div class="modal-body modal-body-post">
+                <form ng-submit="createPost()">
+                    <input type="text" ng-model="newPost.title" class="form-control" placeholder="Please enter a title" required><br>
+                    <input type="number" ng-model="newPost.rooms" class="form-control" placeholder="How many rooms?" required><br>
+                    <input type="number" ng-model="newPost.price" class="form-control" placeholder="What's the price?" required><br>
+
+                     <div class="row">
+                         <div class="col-sm-4">
+                            <img  alt="Rooms" src="static/images/tv-internet.png" height="auto" width="50px" id="rooms">
+                    </div>
+                    <div class="col-sm-4">
+                             <img  alt="Pets" src="static/images/pets.png" height="auto" width="45px" id="pets">
+                    </div>
+                    <div class="col-sm-4">
+                        <img  alt="Parking" src="static/images/parking.png" height="auto" width="50px" id="parking">
+                     </div>
+            </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <button type="button" class="btn tagIcon tagIconWifi" ng-click="toggleFilter('wifi')">Wifi</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn tagIcon tagIconPets" ng-click="toggleFilter('pets')">Pets</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn tagIcon tagIconPark" ng-click="toggleFilter('parking')">Parking</button>
+                        </div>
+
+                    </div>
+
+                    <br> <br>
+                     <div class="row">
+                        <div class="col-sm-4">
+                         <img  alt="Rooms" src="static/images/laundry.png" height="auto" width="50px" id="tv-internet">
+                    </div>
+
+                    <div class="col-sm-4">
+                        <img  alt="Pets" src="static/images/sofa.png" height="auto" width="50px" id="laundry">
+                     </div>
+
+                    <div class="col-sm-4">
+                        <img  alt="Parking" src="static/images/smoking.png" height="auto" width="50px" id="sofa">
+                    </div>
+                </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                          <button type="button" class="btn tagIcon tagIconLaun" ng-click="toggleFilter('laundry')">Laundry</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn tagIcon tagIconFurn" ng-click="toggleFilter('furnished')">Furnished</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn tagIcon tagIconSmok" ng-click="toggleFilter('smoking')">Smoking</button>
+                            <br><br>
+                        </div>
+
+                    </div>
+
+                    <br><br>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                              <input type="submit" value="Submit" class="btn confirm">
+                </form>
+
+                        </div>
+
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+              
+            </div>
+                </div>
+
+
+            </div>
+           
+
+
+
+         
+            <div class="modal-footer">
+
+            </div>
+        </div> /.modal-content -->
+    </div></.modal-dialog -->
+</div>
