@@ -93,4 +93,17 @@ angular.module('HomeSnippets').controller('postController', ['$scope', '$http', 
         }
     }
 
+    var uploader = document.getElementById('uploader');
+
+    var youtubePlayer = document.getElementById('youtube');
+
+    uploader.addEventListener('youtube-processing-complete',function(evt){
+        console.log(evt);
+        youtubePlayer.videoId = evt.detail;
+        $scope.newPost.content = evt.detail;
+    })
+    uploader.addEventListener('youtube-upload-progress',function(evt){
+        console.log(evt.detail);
+    })
+
 }]);

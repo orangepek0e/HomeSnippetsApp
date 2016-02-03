@@ -63,7 +63,8 @@ module.exports = function(app, passport) {
         newPost.laundry = req.param('laundry');
         newPost.furnished = req.param('furnished');
         newPost.smoking = req.param('smoking');
-
+        newPost.content = req.param('content');
+        console.log(newPost);
         newPost.save (function(err){
             if(err)
             throw err;
@@ -137,6 +138,22 @@ module.exports = function(app, passport) {
     // handle the callback after twitter has authenticated the user
     app.get('/auth/twitter/callback',
         passport.authenticate('twitter', {
+            successRedirect : '/dash',
+            failureRedirect : '/'
+        }));
+
+
+    // =====================================
+    // GOOGLE ROUTES =======================
+    // =====================================
+    // send to google to do the authentication
+    // profile gets us their basic information including their name
+    // email gets their emails
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+    // the callback after google has authenticated the user
+    app.get('/auth/google/callback',
+        passport.authenticate('google', {
             successRedirect : '/dash',
             failureRedirect : '/'
         }));

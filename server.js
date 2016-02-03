@@ -25,12 +25,13 @@ app.use(bodyParser()); // get information from html forms
 // making stuff static
 app.use('/static', express.static(__dirname + '/assets'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
+app.use("/bower_components", express.static(__dirname + '/bower_components'));
 app.use('/views', express.static(__dirname + '/views'));
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({ secret: 'oim8getyourownsession' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session

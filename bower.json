@@ -1,0 +1,23 @@
+{
+  "name": "HomeSnippets",
+  "description": "An app to kill Kajiji.",
+  "main": "server.js",
+  "authors": [
+    "orangepek0e <georgejohnston13@hotmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/orangepek0e/HomeSnippetsApp",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "google-youtube-upload": "GoogleWebComponents/google-youtube-upload#^1.1.2",
+    "google-youtube": "GoogleWebComponents/google-youtube#^1.1.3"
+  }
+}
