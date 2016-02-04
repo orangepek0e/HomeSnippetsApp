@@ -97,9 +97,10 @@ angular.module('HomeSnippets').controller('postController', ['$scope', '$http', 
 
     var youtubePlayer = document.getElementById('youtube');
 
+    console.log("Youtube Player", youtubePlayer);
     uploader.addEventListener('youtube-processing-complete',function(evt){
         console.log(evt);
-        youtubePlayer.videoId = evt.detail;
+        //youtubePlayer.videoId = evt.detail;
         $scope.newPost.content = evt.detail;
     })
     uploader.addEventListener('youtube-upload-progress',function(evt){

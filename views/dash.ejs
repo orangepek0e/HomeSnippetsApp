@@ -143,9 +143,11 @@
             <div class="card">
                 <div class="card-block">
                     <h4 class="card-title">{{post.title}}</h4>
-                    
+                    <h4>This is the post content: {{post.content}}</h4>
                 </div>
-                <img data-src="..." alt="Video goes here." class="video">
+                <div ng-show="post.content">
+                    <google-youtube fluid="true" video-id="{{post.content}}"></google-youtube>
+                </div>
                 <div class="card-block">
                     <br>
                     <a href="#" class="card-link">There are {{post.rooms}} rooms in this location</a>

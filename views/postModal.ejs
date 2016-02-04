@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-sm-12">
                  <div class="modal-body modal-body-post">
-                <form ng-submit="createPost()">
+                <form id="newPost" ng-submit="createPost()">
                     <input type="text" ng-model="newPost.title" class="form-control" placeholder="Please enter a title" required><br>
                     <input type="number" ng-model="newPost.rooms" class="form-control" placeholder="How many rooms?" required><br>
                     <input type="number" ng-model="newPost.price" class="form-control" placeholder="What's the price?" required><br>
@@ -70,9 +70,10 @@
 
                     <br><br>
 
-                    
-                    <button type="submit" class="btn">SUBMIT</button>
-                    
+                    <div>
+                        <google-youtube-upload id="uploader" client-id="974831939700-fl8ajuidiv6cngobar7bbasjavsmoko0.apps.googleusercontent.com"></google-youtube-upload>
+
+                    </div>
                     
                     </form>
                     
@@ -89,13 +90,15 @@
          
             <div class="modal-footer">
 
-                <div>
-                    <google-youtube-upload id="uploader" client-id="974831939700-fl8ajuidiv6cngobar7bbasjavsmoko0.apps.googleusercontent.com"></google-youtube-upload>
-
-                    <google-youtube id="youtube"></google-youtube>
-                </div>
+            <button id="submitButton" type="submit" class="btn btn-warning">Submit</button>
 
             </div>
         </div> /.modal-content -->
     </div>
 </div>
+
+<script>
+    $("#submitButton").click( function() {
+        $('#newPost').submit();
+    });
+</script>
